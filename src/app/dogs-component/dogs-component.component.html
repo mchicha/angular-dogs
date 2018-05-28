@@ -1,0 +1,65 @@
+<!--
+    <div>
+    <ul>
+        <li *ngFor="let dog of dogs">{{dog.name}} - {{dog.weight}} kgs</li>
+    </ul>
+</div>
+-->
+
+<!-- ngFor with index-->
+<!--
+
+<div>
+    <ul>
+        <li *ngFor="let dog of dogs ; index as i;">
+            {{i+1}} - {{dog.name}} - {{dog.weight}} kgs
+        </li>
+    </ul>
+</div>
+
+-->
+
+<!-- Pipe-->
+<!--
+<div>
+    <ul>
+        <li *ngFor="let dog of dogs; let idx = index">
+            <span>{{idx + 1}}) {{dog.name | uppercase}} - {{dog.weight}} kgs - {{dog.birthDate | date:'fullDate'}} -  owned by {{ dog.owner }}</span>
+        </li>
+    </ul>
+</div>
+-->
+
+
+
+<!-- Pipe-->
+<!--
+<div>
+    <ul>
+        <li *ngFor="let dog of dogs; let idx = index">
+            <span>{{idx + 1}}) {{dog.name | uppercase}} - {{dog.weight}} kgs - {{dog.birthDate | date:'shortDate'}} -  owned by {{ dog.owner }}</span>
+            <button mat-button>Remove</button>
+        </li>
+    </ul>
+</div>
+-->
+
+<div class="cards-container" layout-wrap layout="row">
+    <mat-card *ngFor="let dog of dogs; let idx = index" class="dog-card">
+        <mat-card-header>
+            <mat-card-title><h3>{{ idx + 1 }} - {{ dog.name }}</h3></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Weight:</strong> {{ dog.weight }}</p>
+          <p><strong>Birthdate:</strong> {{dog.birthDate | date: dateFormat}}</p>
+          <p><strong>Owner:</strong> {{ dog.owner }}</p>
+          <div class="button-row">
+              <button mat-button color="primary" (click)="removeDog(idx)">Delete Dog</button>
+              <button mat-button (click)="toggleDate()">
+                <span *ngIf="dateFormat == 'shortDate'">+</span>
+                <span *ngIf="dateFormat == 'fullDate'">-</span>
+              </button>
+          </div>
+        </mat-card-content>
+    </mat-card>
+</div>

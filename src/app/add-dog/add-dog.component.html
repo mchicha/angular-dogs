@@ -14,5 +14,11 @@
     </div>
 
     <img class="img-dog" src="{{ imageUrl }}" />
-    
+    <!--
+      <div *ngIf="dogWeight < 10">{{dogName}} is underweight</div>
+    -->
+    <!--
+      <div *ngIf="dogWeight < 10" ngClass="message warning">{{dogName}} is underweight</div>
+    -->
+      <div *ngIf="dogWeight < 10" [ngClass]="{'warning' : dogWeight < 5, 'message': true }">{{dogName}} is underweight</div>
   </div>
