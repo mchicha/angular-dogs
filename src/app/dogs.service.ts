@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import Dog  from './dog';
 
 const DOGS = [
   {name: 'Rex', weight: 20, birthDate: new Date(2006, 2, 21), owner: 'Tom'},
@@ -8,23 +9,17 @@ const DOGS = [
   {name: 'Prince', weight: 65, birthDate: new Date(2017, 5, 4), owner: 'Harry'}
 ];
 
-@Component({
-  selector: 'app-dogs-component',
-  templateUrl: './dogs-component.component.html',
-  styleUrls: ['./dogs-component.component.scss']
-})
+@Injectable()
+export class DogsService {
 
-export class DogsComponentComponent implements OnInit {
-    public dogs;
+    constructor() { }
 
-    constructor() {
-        this.dogs = DOGS;
+    getDogs(): Array<any> {
+      return DOGS;
     }
 
-    ngOnInit() {
+    addDog(dog) {
+      DOGS.push(dog);
     }
 
-    removeDog(index) {
-      this.dogs.splice(index, 1);
-    }
 }

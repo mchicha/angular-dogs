@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule} from '@angular/material/toolbar';
-import {MatInputModule} from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
-
 import { AppComponent } from './app.component';
 import { AddDogComponent } from './add-dog/add-dog.component';
 import { AddOwnerComponent } from './add-owner/add-owner.component';
-import { DogsComponentComponent } from './dogs-component/dogs-component.component';
+import { DogsComponent } from './dogs/dogs.component';
+import { DogsService } from './dogs.service';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { DogsComponentComponent } from './dogs-component/dogs-component.componen
     AppComponent,
     AddDogComponent,
     AddOwnerComponent,
-    DogsComponentComponent
+    DogsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +29,12 @@ import { DogsComponentComponent } from './dogs-component/dogs-component.componen
     MatCheckboxModule,
     MatButtonModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DogsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
